@@ -1,0 +1,7 @@
+{
+  "name": "LoginMOBILE",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

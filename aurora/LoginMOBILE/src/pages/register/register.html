@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Register</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-label>Username</ion-label>
+    <ion-input [(ngModel)]="username"></ion-input>
+  </ion-item>
+ 
+  <ion-item>
+   <ion-label>Password</ion-label>
+   <ion-input [(ngModel)]="password"></ion-input>
+ </ion-item>
+
+ <ion-item>
+  <ion-label>Re-Password</ion-label>
+  <ion-input [(ngModel)]="rePassword"></ion-input>
+</ion-item>
+
+<button ion-button block (click)="register()" >Register</button>
+
+</ion-content>
