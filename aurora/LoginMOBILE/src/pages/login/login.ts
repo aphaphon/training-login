@@ -16,6 +16,8 @@ export class LoginPage {
   public username: string
   public password: string
 
+  public input: string
+
 
   constructor(public navCtrl: NavController, public http: HttpClient) {
   }
@@ -24,35 +26,28 @@ export class LoginPage {
     this.navCtrl.push(RegisterPage)
   }
 
-  // Login() {
-  //   this.http.get<boolean>("https://localhost:5001/api/Login/"+this.username+"/"+this.password).subscribe(
-  //   it => {
-  //     this.loginCheck = it;
-  //       alert(JSON.stringify('success'));
-  //       console.log(this.loginCheck)
-  //     },
-  //     error => {
-  //       alert(JSON.stringify('unsuccess'));
-  //     });
+  Logined() {
+    this.http.post<boolean>("https://localhost:5001/api/Login/login", {
+      username: this.username,
+      password: this.password
+    }).subscribe(
+      it => {
+        this.loginCheck = it
+        console.log(it)
+        if (this.loginCheck == false) {
+          alert(JSON.stringify('Please Login first to continue'));
+        }
+        else {
+          this.navCtrl.push(HomePage);
+        }
+      });
 
-  //     if (this.loginCheck == true) {
-  //       this.navCtrl.push(HomePage);   
-  //     }
-  //     else{
-  //       alert(JSON.stringify('โปรดตรวจสอบใหม่อีกครั้ง'));
-  //     }
-  // }
-
-  Login() {
-    this.http.post<boolean>("https://localhost:5001/api/Login/" + this.username + "/" + this.password,
-      {
-        username: this.username,
-        password: this.password
-      }).subscribe(
-        it => {
-          this.loginCheck = it;
-          console.log(this.loginCheck)
-        });
-        //this.navCtrl.push(HomePage)
   }
-}
+
+  // inputtest() {
+  //   this.navCtrl.push(HomePage, {
+  //     sendnavparam: this.input
+  //   })
+
+  }
+

@@ -11,9 +11,11 @@ export class HomePage {
   public username: string;
   public password: string;
 
+  public getnavparam: string;
+
 
   constructor(public navCtrl: NavController, public http: HttpClient, public navParams: NavParams) {
-
+    this.getnavparam = navParams.get('sendnavparam')
 
   }
 
